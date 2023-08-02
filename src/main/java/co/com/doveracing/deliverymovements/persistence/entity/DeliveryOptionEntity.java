@@ -47,7 +47,7 @@ public class DeliveryOptionEntity {
         return idDeliveryOption;
     }
 
-    public void setIdDeliveryOption(Long idMovement) {
+    public void setIdDeliveryOption(Long idDeliveryOption) {
         this.idDeliveryOption = idDeliveryOption;
     }
 
@@ -109,5 +109,17 @@ public class DeliveryOptionEntity {
 
     public Date getCreateAt() {
         return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public List<OrderEntity> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<OrderEntity> orderList) {
+        this.orderList = orderList;
     }
 }

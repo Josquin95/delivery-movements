@@ -1,8 +1,10 @@
 package co.com.doveracing.deliverymovements.persistence;
 
+import co.com.doveracing.deliverymovements.domain.Customer;
 import co.com.doveracing.deliverymovements.domain.DeliveryOption;
 import co.com.doveracing.deliverymovements.domain.repository.IDeliveryOptionRepository;
 import co.com.doveracing.deliverymovements.persistence.crud.IDeliveryOptionCrudRepository;
+import co.com.doveracing.deliverymovements.persistence.entity.CustomerEntity;
 import co.com.doveracing.deliverymovements.persistence.entity.DeliveryOptionEntity;
 import co.com.doveracing.deliverymovements.persistence.mapper.DeliveryOptionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +24,28 @@ public class DeliveryOptionRepository implements IDeliveryOptionRepository{
 
     @Override
     public List<DeliveryOption> getAll() {
-        return null;
+        List<DeliveryOptionEntity> deliveryOptionEntityList = (List<DeliveryOptionEntity>) deliveryOptionCrud.findAll();
+        return deliveryOptionMapper.toDeliveryOption(deliveryOptionEntityList);
+    }
+    @Override
+    public Optional<DeliveryOption> getDeliveryOption(Long idDeliveryOption) {
+        return deliveryOptionCrud.findById(idDeliveryOption).map(deliveryOptionMapper::toDeliveryOption);
     }
 
     @Override
-    public Optional<DeliveryOption> getDeliveryOption(Long deliveryOptionId) {
-        return Optional.empty();
+    public void delete(Long idDeliveryOption) {
+        deliveryOptionCrud.deleteById(idDeliveryOption);
     }
 
     @Override
-    public DeliveryOption save(DeliveryOption deliveryOption) {
-        return null;
+    public DeliveryOption save( DeliveryOption deliveryOption) {
+        DeliveryOptionEntity deliveryOptionEntity = deliveryOptionMapper.toDeliveryOptionEntity(deliveryOption);
+        return deliveryOptionMapper.toDeliveryOption(deliveryOptionCrud.save(deliveryOptionEntity));
     }
 
-    @Override
-    public void delete(Long DeliveryOptionId) {
 
-    }
+
 }
+
+
+
