@@ -1,53 +1,28 @@
-package co.com.doveracing.deliverymovements.persistence.entity;
+package co.com.doveracing.deliverymovements.domain;
 
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-@Entity
-@Table(name = "delivery_option")
-public class DeliveryOptionEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_delivery_option")
+
+public class DeliveryOption {
+
     private Long idDeliveryOption;
-
-    @Column(name = "name_option", nullable = false)
     private String nameOption;
-
-    @Column(name = "desc_option",  nullable = false)
     private String descOption;
-
-    @Column(name = "type_option",  nullable = false)
     private String typeOption;
-
-    @Column(name = "state_option", nullable = false)
     private String stateOption;
-
-    @Column(name = "init_range",  nullable = false)
     private double initRange;
-
-    @Column(name = "final_range",  nullable = false)
     private double finalRange;
-
-    @Column(name = "price",  nullable = false)
     private double price;
-    @Temporal(TemporalType.TIME)
-    @Column(name = "create_at")
     private Date createAt;
 
-    @OneToMany(mappedBy = "deliveryOptionEntity")
-    private List<OrderEntity> orderList;
-
-    public DeliveryOptionEntity() {
-        // Constructor is empty
+    public DeliveryOption(){
     }
 
     public Long getIdDeliveryOption() {
         return idDeliveryOption;
     }
 
-    public void setIdDeliveryOption(Long idMovement) {
+    public void setIdDeliveryOption(Long idDeliveryOption) {
         this.idDeliveryOption = idDeliveryOption;
     }
 
@@ -109,5 +84,9 @@ public class DeliveryOptionEntity {
 
     public Date getCreateAt() {
         return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }

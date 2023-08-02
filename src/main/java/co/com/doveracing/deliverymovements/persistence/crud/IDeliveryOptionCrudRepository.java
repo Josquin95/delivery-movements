@@ -1,7 +1,10 @@
 package co.com.doveracing.deliverymovements.persistence.crud;
-
 import co.com.doveracing.deliverymovements.persistence.entity.DeliveryOptionEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface IDeliveryOptionCrudRepository extends JpaRepository<DeliveryOptionEntity, Long> {
+import java.util.List;
+import java.util.Optional;
+
+public interface IDeliveryOptionCrudRepository extends  PagingAndSortingRepository<DeliveryOptionEntity,Long>{
+
 }
