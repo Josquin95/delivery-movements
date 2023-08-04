@@ -24,6 +24,10 @@ public class DeliveryOptionService {
         return deliveryOptionRepository.getDeliveryOption(deliveryOptionId);
     }
 
+    public Optional<List<DeliveryOption>> getByTypeOption(String typeOption){
+        return deliveryOptionRepository.getByTypeOption(typeOption);
+    }
+
     public DeliveryOption save(DeliveryOption deliveryOption) {
         return deliveryOptionRepository.save(deliveryOption);
     }

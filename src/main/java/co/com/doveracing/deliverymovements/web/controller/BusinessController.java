@@ -31,7 +31,7 @@ public class BusinessController {
             .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @GetMapping("/business")
+    @GetMapping("/filter")
     public ResponseEntity<List<Business>> getByDocument(@RequestParam("documentType") String documentType, @RequestParam("documentNumber") String documentNumber){
         return businessService.getByDocument(documentType,documentNumber)
                 .map(ResponseEntity::ok)

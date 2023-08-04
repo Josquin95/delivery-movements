@@ -18,8 +18,8 @@ public class CustomerService {
         return customerRepository.getAll();
     }
 
-    public Optional<Customer> getCustomer(Long customerId){
-        return customerRepository.getCustomer(customerId);
+    public Customer getCustomer(Long customerId) throws Exception {
+        return customerRepository.getCustomer(customerId).orElseThrow(() -> new Exception("El cliente con el Id: " + customerId + " no se encuentra"));
     }
 
     public Optional<List<Customer>> getByDocument(String documentType, String documentNumber) {
@@ -34,10 +34,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public boolean delete(Long customerId){
-        return getCustomer(customerId).map(customer -> {
+    public boolean delete(Long customerId) throws Exception {
+        Customer customer = getCustomer(customerId);
+        if (customer != null) {
             customerRepository.delete(customerId);
             return true;
-        }).orElse(false);
+        }
+        return false;
     }
 }

@@ -24,7 +24,7 @@ public interface DeliveryOptionMapper {
             @Mapping(source = "createAt", target = "createAt")
     })
     DeliveryOption toDeliveryOption(DeliveryOptionEntity deliveryOptionEntity);
-    List <DeliveryOption> toDeliveryOption(List<DeliveryOptionEntity> deliveryOptionEntityList);
+    List <DeliveryOption> toDeliveryOptions(List<DeliveryOptionEntity> deliveryOptionEntityList);
 
     @InheritInverseConfiguration
     @Mapping(target = "orderList", ignore = true)

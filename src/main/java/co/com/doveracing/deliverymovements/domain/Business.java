@@ -29,6 +29,7 @@ public class Business {
 
 
     public Business() {
+        // Constructor empty
     }
 
     public Long getIdBusiness() {

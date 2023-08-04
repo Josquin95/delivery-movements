@@ -7,8 +7,12 @@ import java.util.Optional;
 
 public interface IDeliveryOptionRepository {
     List<DeliveryOption> getAll();
+
     Optional<DeliveryOption>getDeliveryOption(Long deliveryOptionId);
+
     DeliveryOption save(DeliveryOption deliveryOption);
 
-    void delete(Long DeliveryOptionId);
+    Optional<List<DeliveryOption>> getByTypeOption(String typeOption);
+
+    void delete(Long deliveryOption);
 }

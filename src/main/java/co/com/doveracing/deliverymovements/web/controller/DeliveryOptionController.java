@@ -1,5 +1,6 @@
 package co.com.doveracing.deliverymovements.web.controller;
 
+import co.com.doveracing.deliverymovements.domain.Business;
 import co.com.doveracing.deliverymovements.domain.Customer;
 import co.com.doveracing.deliverymovements.domain.DeliveryOption;
 import co.com.doveracing.deliverymovements.domain.service.DeliveryOptionService;
@@ -24,6 +25,13 @@ public class DeliveryOptionController {
     @GetMapping("/{id}")
     public ResponseEntity<DeliveryOption> getDeliveryOption(@PathVariable("id") Long  id){
         return deliveryOptionService.getDeliveryOption(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<DeliveryOption>> getByOptionType(@RequestParam("optionType") String optionType){
+        return deliveryOptionService.getByTypeOption(optionType)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

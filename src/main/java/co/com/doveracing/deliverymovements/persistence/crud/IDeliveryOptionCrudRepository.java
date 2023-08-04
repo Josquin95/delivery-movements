@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface IDeliveryOptionCrudRepository extends  PagingAndSortingRepository<DeliveryOptionEntity,Long>{
 
+    Optional<List<DeliveryOptionEntity>> findByTypeOption(String typeOption);
+
 }

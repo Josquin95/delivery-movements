@@ -157,4 +157,9 @@ public class CustomerEntity {
     public void setOrderList(List<OrderEntity> orderList) {
         this.orderList = orderList;
     }
+
+    @PrePersist
+    public void prePersist() {
+        this.createAt = new Date();
+    }
 }

@@ -25,7 +25,7 @@ public class DeliveryOptionRepository implements IDeliveryOptionRepository{
     @Override
     public List<DeliveryOption> getAll() {
         List<DeliveryOptionEntity> deliveryOptionEntityList = (List<DeliveryOptionEntity>) deliveryOptionCrud.findAll();
-        return deliveryOptionMapper.toDeliveryOption(deliveryOptionEntityList);
+        return deliveryOptionMapper.toDeliveryOptions(deliveryOptionEntityList);
     }
     @Override
     public Optional<DeliveryOption> getDeliveryOption(Long idDeliveryOption) {
@@ -43,6 +43,10 @@ public class DeliveryOptionRepository implements IDeliveryOptionRepository{
         return deliveryOptionMapper.toDeliveryOption(deliveryOptionCrud.save(deliveryOptionEntity));
     }
 
+    @Override
+    public Optional<List<DeliveryOption>> getByTypeOption(String typeOption) {
+        return deliveryOptionCrud.findByTypeOption(typeOption).map(deliveryOptionMapper::toDeliveryOptions);
+    }
 
 
 }
